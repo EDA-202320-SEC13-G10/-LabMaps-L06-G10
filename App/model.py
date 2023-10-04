@@ -218,6 +218,11 @@ def newYear(pubyear):
     entry['books'] = lt.newList('SINGLE_LINKED', compareYears)
     return entry
 
+def newTitle(title):
+    entry = {'title': "", "books": None}
+    entry['title'] = title
+    entry['books'] = lt.newList('SINGLE_LINKED', compareTitles)
+    return entry
 
 def addBookAuthor(catalog, authorname, book):
     """
@@ -269,13 +274,20 @@ def addBookTag(catalog, tag):
             lt.addLast(tagbook['value']['books'], book['value'])
 
 
-def addBookTitle(catalog, title):
+def addBookTitle(catalog, title, book):
     # TODO lab 6, agregar el libro al map de titulos
     """
     Completar la descripcion de addBookTitle
     """
-    
-    pass
+    titles = catalog['title']
+    existtitle= mp.contains(titles, title)
+    if existtitle:
+        entry = mp.get(titles, title)
+        titel = me.getValue(entry)
+    else:
+        titel = newTitle(title)
+        mp.put(titles, title, titel)
+    lt.addLast(titel['books'], book)
 
 
 # ==============================
