@@ -100,10 +100,10 @@ def printBestBooks(books):
     """
     size = lt.size(books)
     if size:
-        print(' Estos son los mejores libros: ')
+        print(' Estos son los libros: ')
         for book in lt.iterator(books):
             print('Titulo: ' + book['title'] + '  ISBN: ' +
-                  book['isbn'] + ' Rating: ' + book['average_rating'])
+                  book['isbn'] + ' Authors: ' + book['authors'])
         print("\n")
     else:
         print('No se encontraron libros.\n')
@@ -114,7 +114,12 @@ def printBooksbyTitle(books):
     """
     Completar la descripcion de printBooksbyTitle
     """
-    pass
+
+    print(' Estos son los libros: ')
+
+    print(books)
+
+
 
 # Menu de opciones
 
@@ -126,6 +131,7 @@ def printMenu():
     print("3- Consultar los libros de un año")
     print("4- Consultar los libros de un autor")
     print("5- Consultar los Libros por etiqueta")
+    print("6- Consultar los Libros por nombre")
     # TODO lab 6, agregar la opcion nueva del menu
     print("0- Salir")
 
@@ -139,6 +145,7 @@ while True:
         print("Inicializando Catálogo ....")
         # Se crea el controlador asociado a la vista
         ctrlr = newController()
+
 
     elif int(inputs[0]) == 2:
         print("Cargando información de los archivos ....")
@@ -166,7 +173,10 @@ while True:
         # TODO lab 6, conectar con las funciones del controlador e imprimir
         # controller.getBooksByTitle(ctrlr, title)
         # controller.titleSize(ctrlr)
-        pass
+        label = input("Nombre a buscar: ")
+        books = controller.getBooksByTitle(ctrlr, label)
+        printBooksbyTitle(books)
+
 
     elif int(inputs[0]) == 0:
         break
@@ -174,3 +184,4 @@ while True:
     else:
         continue
 sys.exit(0)
+printBooksbyTitle
