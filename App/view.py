@@ -133,6 +133,7 @@ def printMenu():
     print("5- Consultar los Libros por etiqueta")
     print("6- Consultar los Libros por nombre")
     # TODO lab 6, agregar la opcion nueva del menu
+    print("6- Consultar los Libros por titulo")
     print("0- Salir")
 
 

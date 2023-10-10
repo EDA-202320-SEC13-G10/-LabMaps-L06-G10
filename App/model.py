@@ -60,7 +60,8 @@ def newCatalog():
                'authors': None,
                'tags': None,
                'tagIds': None,
-               'years': None}
+               'years': None,
+               'titles': None }
 
     """
     Esta lista contiene todo los libros encontrados
@@ -221,6 +222,11 @@ def newYear(pubyear):
     entry['books'] = lt.newList('SINGLE_LINKED', compareYears)
     return entry
 
+def newTitle(title):
+    entry = {'title': "", "books": None}
+    entry['title'] = title
+    entry['books'] = lt.newList('SINGLE_LINKED', compareTitles)
+    return entry
 
 def addBookAuthor(catalog, authorname, book):
     """
